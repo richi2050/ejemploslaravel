@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 
+use Excel;
+
 class UserController extends Controller
 {
     /**
@@ -28,6 +30,20 @@ class UserController extends Controller
         $user =User::paginate(5);
         //$user->setPath('http://localhost/laravel/prueba/public/index');
         return view('listauser',compact('user'));
+    }
+
+    public function excel(){
+        Excel::create('Laravel Excel', function($excel) {
+
+            $excel->sheet('Productos', function($sheet) {
+
+                $products = User::all();
+
+                $sheet->fromArray($products);
+
+            });
+        })->export('csv');
+
     }
 
 

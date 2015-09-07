@@ -21,6 +21,6 @@ Route::get('index',['as'=> 'index','uses'=>'UserController@index']);
 Route::get('data',['as'=> 'data','uses'=>'UserController@data']);
 
 
-Route::get('mail',['as'=> 'mail','uses'=>'UserController@addEmailToList']);
+Route::get('excel',['as'=> 'mail','uses'=>'UserController@excel']);
 
 
